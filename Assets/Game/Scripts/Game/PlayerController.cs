@@ -1,16 +1,18 @@
+using GDLib.Comms;
 using Mirror;
+using Space;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
 {
-    [Header("Modifiers")]
-    [SerializeField] private float speedMod;
+    [Header("Data")]
+    [SerializeField] PlayerData data;
 
     public override void OnStartLocalPlayer()
     {
-
+        transform.position = data.SpawnPos;
     }
 
     private void Update()
@@ -19,12 +21,15 @@ public class PlayerController : NetworkBehaviour
             return;
 
         float x = Input.GetAxis("Horizontal");
-        x = speedMod * Time.deltaTime;
+        x *= data.SpeedMod * Time.deltaTime;
 
         float currentX = transform.position.x + x;
 
-        currentX = Mathf.Clamp(currentX, )
+        currentX = Mathf.Clamp(
+            currentX, 
+            GameManager.MinBoundX, 
+            GameManager.MaxBoundX);
 
-        transform.position = speedMod * Time.deltaTime * new Vector3(x, 0.0f);
+        transform.position = new Vector2(currentX, transform.position.y);
     }
 }
