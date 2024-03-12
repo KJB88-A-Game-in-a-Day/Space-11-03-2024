@@ -4,21 +4,25 @@ using UnityEngine;
 
 namespace Space
 {
-    public class GameManager : MonoBehaviour, IService
+    public class GameManager : MonoBehaviour
     {
-        [Header("Bounds")]
-        static float maxBoundX = 4.5f;
-        public static float MaxBoundX => maxBoundX;
-        static float minBoundX = -4.5f;
-        public static float MinBoundX => minBoundX;
+        public static GameManager instance = null;
 
-        static float minBoundY;
-        public static float MinBoundY => minBoundY;
-        static float maxBoundY;
-        public static float MaxBoundY => maxBoundY;
+        [Header("Bounds")]
+        [SerializeField] float maxBoundX = 2.0f;
+        [SerializeField] float minBoundX = -2.0f;
+        public float MaxBoundX => maxBoundX;
+        public float MinBoundX => minBoundX;
+
+        [SerializeField] float maxBoundY = 5.0f;
+        [SerializeField] float minBoundY = -5.0f;
+        public float MaxBoundY => maxBoundY;
+        public float MinBoundY => minBoundY;
+
 
         public void Awake()
         {
+            instance = this;
             ServiceLocator.AddService(ServiceLibrary.MessageBroker, new MessageBroker());
         }
     }

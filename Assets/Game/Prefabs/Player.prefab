@@ -154,4 +154,5 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  spriteRenderer: {fileID: 8053070098125893956}
   data: {fileID: 11400000, guid: e494a9590fb76d7438ed67b6dc5cb121, type: 2}
