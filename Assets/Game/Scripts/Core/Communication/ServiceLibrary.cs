@@ -5,4 +5,6 @@
 
     private readonly static string gameManager = "gameManager";
     public static string GameManager => gameManager.ToLower();
+    private readonly static string objectPool = "objectPool";
+    public static string ObjectPool => objectPool.ToLower();
 }

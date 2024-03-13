@@ -19,7 +19,6 @@ namespace Space
         public float MaxBoundY => maxBoundY;
         public float MinBoundY => minBoundY;
 
-
         public void Awake()
         {
             instance = this;
